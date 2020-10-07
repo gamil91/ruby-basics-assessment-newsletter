@@ -12,6 +12,7 @@ DATE = "Nov 20, 2019"
 
 SUBSCRIBERS = ["rhona@grimes.info", "cedricschmidt@robel.io", "edmond@ko.org", "bryant@cummingsfisher.biz", "alverta@bernhard.name"]
 UNSUBSCRIBED = ["cedricschmidt@robel.io", "alverta@bernhard.name"]
+subscribed = []
 
 ARTICLES = [
   {"author": "Destiny Blanda Bruen II", "title": "Mining", "text": "The orthogonal features, when combined, can explode into complexity."},
@@ -27,13 +28,25 @@ ARTICLES = [
 # Methods to generate the newsletter
 #########################
 
-def calculate_recipients
-  # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
-  # write a method that will return an array of only the subscribers who haven't unsubscribed
+def calculate_recipients (subscribed)
+  binding.pry
+  subscribed = []
+binding.pry
+  SUBSCRIBERS.find do |email_address|
+    UNSUBSCRIBED.find do |delete_email|
+      if email_address != delete_email
+        subscribed << email_address
+    end
+  end
+end
+subscribed
+binding.pry
 end
 
-def first_n_articles(number_of_articles
-  ARTICLES.first(number_of_articles)
+
+
+def first_n_articles(number_of_articles)
+  ARTICLES.first(number_of_articles.to_i)
 end
 
 def print_recipients
@@ -43,9 +56,11 @@ def print_recipients
 end
 
 def print_one_article(article)
+  
   # Write a method that will take an article hash
   # and print the title, author and text as a formatted string
   # See the README/sample output for examples
+ 
 end
 
 def print_many_articles(articles)
@@ -54,8 +69,9 @@ def print_many_articles(articles)
 end
 
 def format_campus_location(campus)
-  "Flatiron #{campus["name"]}"
+  "Flatiron #{campus[:name]}"
 end
+
 
 def format_subject
   puts "#{format_campus_location(CAMPUS)} Newsletter - #{DATE}\n\n"
@@ -80,7 +96,7 @@ def print_newsletter(number)
   print_many_articles(articles)
   puts format_footer(CAMPUS)
 
-  end
+  
 end
 
 def run
